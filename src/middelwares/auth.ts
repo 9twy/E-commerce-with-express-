@@ -21,7 +21,7 @@ const authMiddleware=async(req:Request,res:Response,next:NextFunction)=>{
     }
     else{
     const payload=jwt.verify(token,JWT_SECRET) as any
-    console.log(payload.userId);
+    
     
     const user =await prismaClinet.user.findFirst({where:{id:payload.userId}})
     
@@ -31,7 +31,7 @@ const authMiddleware=async(req:Request,res:Response,next:NextFunction)=>{
     
     req.user=user;
     next();
-    console.log(user);
+    
     
     
     
